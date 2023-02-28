@@ -1,0 +1,61 @@
+swagger: '2.0'
+info:
+  title: Product API
+  version: 1.0.0
+basePath: /dev
+schemes:
+  - https
+paths:
+  /products:
+    get:
+      summary: Get all products
+      description: Retrieve a list of all products
+      responses:
+        200:
+          description: Successful response with products list
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        404:
+          description: No products found
+
+  /products/{productId}:
+    get:
+      summary: Get a product by ID
+      description: Retrieve a product by its ID
+      parameters:
+        - name: productId
+          in: path
+          description: ID of the product to retrieve
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response with product details
+          schema:
+            $ref: '#/definitions/Product'
+        404:
+          description: Product not found
+
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The unique identifier of the product
+      name:
+        type: string
+        description: The name of the product
+      price:
+        type: number
+        format: float
+        description: The price of the product
+
+  ErrorResponse:
+    type: object
+    properties:
+      message:
+        type: string
+        description: A message describing the error that occurred
