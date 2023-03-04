@@ -1,0 +1,64 @@
+{
+  "stocks": [
+    {
+      "PutRequest": {
+        "Item": {
+          "product_id": {
+            "S": "1dc8644d-4e2c-4a94-b439-6f68f5809815"
+          },
+          "count": {
+            "N": "10"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "product_id": {
+            "S": "03d074ce-9287-4661-8531-08d8d31ddc9a"
+          },
+          "count": {
+            "N": "5"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "product_id": {
+            "S": "f06b7c4b-6f02-4a24-9a88-38f2e6d8a6f1"
+          },
+          "count": {
+            "N": "20"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "product_id": {
+            "S": "ff2d89cc-9c50-401f-b95a-b91c191a84a7"
+          },
+          "count": {
+            "N": "8"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "product_id": {
+            "S": "0a3d3fbb-68dd-476f-bcc3-07ef3571c9b9"
+          },
+          "count": {
+            "N": "15"
+          }
+        }
+      }
+    }
+  ]
+}
