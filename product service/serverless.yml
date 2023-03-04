@@ -3,40 +3,36 @@ frameworkVersion: '3'
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs14.x
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
-
-# you can add statements to the Lambda function's IAM Role here
-#  iam:
-#    role:
-#      statements:
-#        - Effect: "Allow"
-#          Action:
-#            - "s3:ListBucket"
-#          Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#        - Effect: "Allow"
-#          Action:
-#            - "s3:PutObject"
-#          Resource:
-#            Fn::Join:
-#              - ""
-#              - - "arn:aws:s3:::"
-#                - "Ref" : "ServerlessDeploymentBucket"
-#                - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
-package:
-  exclude:
-    - node_modules/**
+  profile: default
+  environment:
+    TABLE_PRODUCTS: products
+    TABLE_STOCKS: stocks
+  iam:
+    role:
+      name: DynamoDBfullaccessLambdasServeless
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:GetItem
+            - dynamodb:Scan
+            - dynamodb:BatchGetItem
+            - dynamodb:BatchWriteItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - 'arn:aws:dynamodb:us-east-1:*:table/products'
+            - 'arn:aws:dynamodb:us-east-1:*:table/stocks'
 
 functions:
   getProductsById:
     handler: getProductsById/index.getProductsById
+    environment:
+      PRODUCTS_TABLE: 'products'
+      STOCKS_TABLE: 'stocks'
     events:
       - http:
           path: products/{id}
@@ -46,21 +42,31 @@ functions:
 
   getProductsList:
     handler: getProductsList/index.getProductsList
+    environment:
+      PRODUCTS_TABLE: 'products'
+      STOCKS_TABLE: 'stocks'
     events:
       - http:
           path: products
           method: get
           cors: true
           integration: lambda
-
+  createProduct:
+    handler: createProduct/index.createProduct
+    environment:
+      PRODUCTS_TABLE: 'products'
+      STOCKS_TABLE: 'stocks'
+    events:
+      - http:
+          path: products
+          method: post
+          cors: true
+          integration: lambda
 resources:
   Outputs:
     ServerlessDeploymentBucketName:
       Value:
         Ref: ServerlessDeploymentBucket
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
 #    events:
 #      - httpApi:
 #          path: /users/create
