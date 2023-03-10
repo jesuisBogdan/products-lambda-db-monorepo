@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "1dc8644d-4e2c-4a94-b439-6f68f5809815"
+          },
+          "title": {
+            "S": "The Great Book"
+          },
+          "description": {
+            "S": "This is a great book"
+          },
+          "price": {
+            "N": "25"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "03d074ce-9287-4661-8531-08d8d31ddc9a"
+          },
+          "title": {
+            "S": "The Small Book"
+          },
+          "description": {
+            "S": "This is a small book"
+          },
+          "price": {
+            "N": "102"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "f06b7c4b-6f02-4a24-9a88-38f2e6d8a6f1"
+          },
+          "title": {
+            "S": "The Big Book"
+          },
+          "description": {
+            "S": "This is a big book"
+          },
+          "price": {
+            "N": "23"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "ff2d89cc-9c50-401f-b95a-b91c191a84a7"
+          },
+          "title": {
+            "S": "The Funny Book"
+          },
+          "description": {
+            "S": "This is a funny book"
+          },
+          "price": {
+            "N": "152"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "0a3d3fbb-68dd-476f-bcc3-07ef3571c9b9"
+          },
+          "title": {
+            "S": "The Sad Book"
+          },
+          "description": {
+            "S": "This is a sad book"
+          },
+          "price": {
+            "N": "23"
+          }
+        }
+      }
+    }
+  ]
+}
