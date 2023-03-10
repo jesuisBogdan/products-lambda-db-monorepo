@@ -10,6 +10,8 @@ Test the lambdas:
 - [getProductsById] - GET - https://j351e5rjof.execute-api.us-east-1.amazonaws.com/dev/products/{id}
 - [getProductsList] - GET - https://j351e5rjof.execute-api.us-east-1.amazonaws.com/dev/products
 - [createProduct] - POST - https://j351e5rjof.execute-api.us-east-1.amazonaws.com/dev/products
+- [importProductsFile] - GET - https://j351e5rjof.execute-api.us-east-1.amazonaws.com/dev/import
+- [importFileParser] - S3 event - https://j351e5rjof.execute-api.us-east-1.amazonaws.com/dev/import
 
 CloudFront url:
 
