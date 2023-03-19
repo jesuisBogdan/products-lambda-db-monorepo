@@ -94,7 +94,7 @@ resources:
     productAttributeFilter:
       Type: 'AWS::SNS::Subscription'
       Properties:
-        TopicArn: !GetAtt createProductTopic.Arn
+        TopicArn: !Ref createProductTopic
         Protocol: email
         Endpoint: bogdan_abuziloae@epam.com
         FilterPolicy: '{"price": [{"numeric": [">=", 50]}]}'
@@ -102,7 +102,7 @@ resources:
     productAttributeFilter2:
       Type: 'AWS::SNS::Subscription'
       Properties:
-        TopicArn: !GetAtt createProductTopic.Arn
+        TopicArn: !Ref createProductTopic
         Protocol: email
         Endpoint: bogdan.abuziloae@gmail.com
         FilterPolicy: '{"price": [{"numeric": ["<", 50]}]}'

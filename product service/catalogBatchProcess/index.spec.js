@@ -1,6 +1,5 @@
 const { catalogBatchProcess } = require('./catalogBatchProcess');
 const AWSMock = require('aws-sdk-mock');
-const AWS = require('aws-sdk');
 
 describe('catalogBatchProcess', () => {
   beforeEach(() => {
