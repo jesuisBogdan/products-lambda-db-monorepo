@@ -13,6 +13,11 @@ provider:
         - 's3:*'
       Resource:
         - 'arn:aws:s3:::new-aws-node-s3/*'
+    - Effect: Allow
+      Action:
+        - 'sqs:SendMessage'
+      Resource:
+        - 'arn:aws:sqs:us-east-1:893149911957:catalogItemsQueue.fifo'
 
 functions:
   importProductsFile:
