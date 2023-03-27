@@ -1,0 +1,35 @@
+service: serverless-logic
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs14.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 's3:ListBucket'
+      Resource:
+        - 'arn:aws:s3:::new-aws-node-s3'
+    - Effect: Allow
+      Action:
+        - 's3:*'
+      Resource:
+        - 'arn:aws:s3:::new-aws-node-s3/*'
+
+functions:
+  importProductsFile:
+    handler: importProductsFile/index.importProductsFile
+    events:
+      - http:
+          method: get
+          path: /import
+          cors: true
+          integration: lambda
+
+  importFileParser:
+    handler: importFileParser/index.importFileParser
+    events:
+      - s3:
+          bucket: new-aws-node-s3
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploaded/
+          existing: true
