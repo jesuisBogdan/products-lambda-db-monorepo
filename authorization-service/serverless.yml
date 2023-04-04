@@ -1,0 +1,31 @@
+service: authorization-service
+frameworkVersion: '3'
+plugins:
+  - serverless-dotenv-plugin
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  apiGateway:
+    minimumCompressionSize: 1024
+    shouldStartNameWithService: true
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+    MY_GITHUB_ACCOUNT_LOGIN: 'jesuisBogdan'
+functions:
+  basicAuthorizer:
+    handler: basicAuthorizer/index.basicAuthorizer
+package:
+  individually: true
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    exclude:
+      - aws-sdk
+    target: node14
+    define:
+      'require.resolve': null
+    platform: node
+    concurrency: 10
